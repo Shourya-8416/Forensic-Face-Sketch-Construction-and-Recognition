@@ -127,12 +127,6 @@ Open http://127.0.0.1:5000/ in your browser.
 
 ---
 
-## 📜 License
-
-MIT © Your Name
-
----
-
 ## 🙋‍ Questions?
 
 Open an issue or contact me at `<mshourya9456@gmail.com>`.
