@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forensic Face Tool – Login</title>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; margin: 0;
+      background: linear-gradient(135deg, #001f3f, #011a3d);
+      color: #faf8f6; overflow: hidden;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .container {
+      text-align: center;
+      background-color: rgba(0,0,0,0.85);
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+      width: 90%; max-width: 450px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    h1 {
+      font-size: 3rem; margin-bottom: 10px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+    .subtitle {
+      font-size: 1.1rem; margin-bottom: 30px; color: #ddd;
+    }
+    .input-field {
+      width: 100%; padding: 12px 20px; margin: 10px 0;
+      font-size: 1rem; border: none; border-radius: 50px;
+      background: rgba(255,255,255,0.1); color: #fff;
+      text-align: center;
+    }
+    .input-field::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    .otp-note {
+      margin: 15px 0; font-size: 0.9rem; color: rgba(255,255,255,0.7);
+    }
+    .actions button {
+      padding: 15px 35px; font-size: 1rem;
+      background-color: #0066cc; color: #ffffff;
+      border: none; border-radius: 50px; cursor: pointer;
+      margin: 15px; transition: all 0.3s ease;
+      font-weight: bold; box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .actions button:hover {
+      background-color: #004c99;
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    .actions button:active {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+    a { color: #faf8f6; text-decoration: underline; }
+    a:hover { color: #ddd; }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      .actions button { padding: 10px 25px; font-size: 0.9rem; }
+
+    }
+
+    /* Password‐visibility toggle */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+.password-wrapper .toggle-password {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* wrap the input + icon */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* style the eye icon */
+.password-wrapper .toggle-password {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.password-wrapper .toggle-password:hover {
+  opacity: 1;
+}
+
+
+  </style>
+
+  
+</head>
+<body>
+
+    
+  <div class="container">
+    <h1>Forensic Face Tool</h1>
+    <p class="subtitle">Please sign in to continue</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in messages %}
+        <div class="flash {{cat}}">{{msg}}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+      {% if not otp_required %}
+        <input class="input-field"
+               type="email" name="email"
+               placeholder="Email" required autofocus>
+
+       
+        <div class="password-wrapper">
+  <input
+    id="password"
+    class="input-field"
+    type="password"
+    name="password"
+    placeholder="Password"
+    required>
+  <img
+    src="{{ url_for('static', filename='images/eye.png') }}"
+    alt="Toggle password visibility"
+    class="toggle-password"
+    data-target="password">
+</div>
+
+
+      {% else %}
+        <input class="input-field"
+               type="text" name="otp" maxlength="6"
+               placeholder="Enter OTP" required autofocus>
+
+        <p class="otp-note">
+          An OTP has been sent to <strong>{{ pending_email }}</strong>
+        </p>
+      {% endif %}
+
+      <div class="actions">
+        {% if not otp_required %}
+          <button type="submit">SIGN IN</button>
+        {% else %}
+          <button type="submit">VERIFY OTP</button>
+        {% endif %}
+      </div>
+    </form>
+
+    {% if not otp_required %}
+      <p style="margin-top:20px;">
+        <a href="{{ url_for('register') }}">Create an account</a>
+      </p>
+    {% endif %}
+  </div>
+</body>
+
+<script>
+// find all eye‐icons and hook them up
+document.querySelectorAll('.toggle-password').forEach(icon => {
+  icon.addEventListener('click', () => {
+    const field = document.getElementById(icon.dataset.target);
+    if (!field) return;
+    // toggle type
+    field.type = field.type === 'password' ? 'text' : 'password';
+    // you can also swap the icon here if you have a "closed eye" version
+  });
+});
+</script>
+
+
+</html>
