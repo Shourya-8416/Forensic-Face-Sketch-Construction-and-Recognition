@@ -45,15 +45,8 @@ if __name__ == '__main__':
 
     people = [
        
-        {'filename': 'Manjula B M.jpg', 'id': 'person_0001', 'name': 'Manjula B M', 'dob': 'Unknown', 'age': ''},
-        {'filename': 'Pramodhini R.jpg', 'id': 'person_0002', 'name': 'Pramodhini R', 'dob': 'Unknown', 'age': ''},
-        {'filename': 'Rekha Phadke.jpg', 'id': 'person_0003', 'name': 'Rekha Phadke', 'dob': 'Unknown', 'age': ''},
-        {'filename': 'Rajani R.jpg', 'id': 'person_0004', 'name': 'Rajani R', 'dob': 'Unknown', 'age': ''},
-        {'filename': 'Subhra Chakraborty.jpg', 'id': 'person_0005', 'name': 'Subhra Chakraborty', 'dob': 'Unknown', 'age': ''},
-        {'filename': 'virat_kohli.jpg', 'id': 'person_0006', 'name': 'Virat Kolhi', 'dob': '1952-01-18', 'age': ''},
-        {'filename': 'Dawood5.jpg', 'id': 'person_0011', 'name': 'Dawood Ibrahim', 'dob': '1955-12-26', 'age': ''},
-        {'filename': 'Arya.jpg', 'id': 'person_0012', 'name': 'Manoj Kumar', 'dob': '1987-12-26', 'age': '38'},
-        {'filename': 'Osama3.jpg', 'id': 'person_0013', 'name': 'Osama Bin Laden', 'dob': '1957-03-10', 'age': ''}    
+        {'filename': 'image.jpg', 'id': 'person_0001', 'name': 'name', 'dob': 'Unknown', 'age': ''},
+      
 
     ]
 
