@@ -31,8 +31,8 @@ app.config.update(
     MAIL_SERVER   = "smtp.gmail.com",
     MAIL_PORT     = 587,
     MAIL_USE_TLS  = True,
-    MAIL_USERNAME = "forensic.face.tool@gmail.com",
-    MAIL_PASSWORD = "iwqh puhe ryod xmkk"
+    MAIL_USERNAME = "#",  #Replace this with your credential
+    MAIL_PASSWORD = "#"
 )
 mail = Mail(app)
 
